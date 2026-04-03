@@ -1,22 +1,41 @@
-.venv/
+# Python
 __pycache__/
 *.py[cod]
-.pytest_cache/
-.ruff_cache/
-.mypy_cache/
-.coverage
+*.egg-info/
 dist/
 build/
-*.egg-info/
-.slopcheck/*.json
-!.slopcheck/.gitkeep
+*.egg
+.venv/
+venv/
 
-# Internal dev files
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+*.Zone.Identifier
+
+# Internal dev files (not for public repo)
 .agent/
 .claude/
+.claude-octopus/
+.claude-octopus-staging/
+.remember/
+.slopcheck/
 prompts/
 AGENTS.md
 CLAUDE.md
 code_review.md
 wiki/
-*.Zone.Identifier
+.editorconfig
+
+# Test/build artifacts
+.pytest_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+*.log

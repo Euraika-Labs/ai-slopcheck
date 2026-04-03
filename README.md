@@ -1,7 +1,7 @@
 # ai-slopcheck
 
-[![PyPI](https://img.shields.io/pypi/v/ai-slopcheck?color=blue)](https://pypi.org/project/ai-slopcheck/)
-[![Python](https://img.shields.io/pypi/pyversions/ai-slopcheck)](https://pypi.org/project/ai-slopcheck/)
+[![PyPI](https://img.shields.io/pypi/v/ai-slopcheck?color=blue)](https://pypi.org/project/ai-ai_slopcheck/)
+[![Python](https://img.shields.io/pypi/pyversions/ai-slopcheck)](https://pypi.org/project/ai-ai_slopcheck/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Tests](https://img.shields.io/badge/tests-793%20passing-brightgreen)]()
 [![Rules](https://img.shields.io/badge/rules-72-blue)]()
@@ -91,7 +91,7 @@ ai-slopcheck scan . --output findings.json --fail-on none
 ai-slopcheck create-baseline findings.json
 
 # CI: only fail on NEW findings
-ai-slopcheck scan . --baseline .slopcheck/baseline.json --fail-on warning
+ai-slopcheck scan . --baseline .ai_slopcheck/baseline.json --fail-on warning
 ```
 
 ## CLI Reference
@@ -118,7 +118,7 @@ ai-slopcheck scan . --baseline .slopcheck/baseline.json --fail-on warning
 
 ## Configuration
 
-Create `.slopcheck/config.yaml`:
+Create `.ai_slopcheck/config.yaml`:
 
 ```yaml
 rules:
@@ -149,7 +149,7 @@ pip install tree-sitter-python tree-sitter-javascript tree-sitter-go tree-sitter
 ## Project Layout
 
 ```
-slopcheck/
+ai_slopcheck/
 ├── cli.py                 — 6 CLI commands
 ├── config.py              — 50+ Pydantic config models
 ├── models.py              — Finding, ScanResult (stable contract)
@@ -181,7 +181,7 @@ slopcheck/
 | [CLI Reference](docs/cli-reference.md) | Commands and flags |
 | [User Guide](docs/user-guide.md) | Getting started, CI setup |
 | [Security Model](docs/security-model.md) | Threat model, safety |
-| [Wiki](https://github.com/Euraika-Labs/slopcheck/wiki) | FAQ, tutorials |
+| [Wiki](https://github.com/Euraika-Labs/ai_slopcheck/wiki) | FAQ, tutorials |
 
 ## Contributing
 
