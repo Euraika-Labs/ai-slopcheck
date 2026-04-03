@@ -1,7 +1,7 @@
 # ai-slopcheck
 
-[![PyPI](https://img.shields.io/pypi/v/ai-slopcheck?color=blue)](https://pypi.org/project/ai-ai_slopcheck/)
-[![Python](https://img.shields.io/pypi/pyversions/ai-slopcheck)](https://pypi.org/project/ai-ai_slopcheck/)
+[![PyPI](https://img.shields.io/pypi/v/ai-slopcheck?color=blue)](https://pypi.org/project/ai_slopcheck/)
+[![Python](https://img.shields.io/pypi/pyversions/ai-slopcheck)](https://pypi.org/project/ai_slopcheck/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Tests](https://img.shields.io/badge/tests-793%20passing-brightgreen)]()
 [![Rules](https://img.shields.io/badge/rules-72-blue)]()

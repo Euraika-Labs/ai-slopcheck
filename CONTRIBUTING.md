@@ -37,9 +37,9 @@ See [docs/rule-authoring.md](docs/rule-authoring.md) for the full guide.
 
 ### Quick checklist
 
-1. Create rule in `slopcheck/rules/generic/your_rule.py`
-2. Add config class in `slopcheck/config.py`
-3. Register in `slopcheck/rules/registry.py`
+1. Create rule in `ai_slopcheck/rules/generic/your_rule.py`
+2. Add config class in `ai_slopcheck/config.py`
+3. Register in `ai_slopcheck/rules/registry.py`
 4. Write tests in `tests/test_your_rule.py` (6+ tests)
 5. Run `pytest && ruff check .`
 

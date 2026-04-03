@@ -19,7 +19,7 @@ ruff. If it is an artifact of an LLM's text-generation process, it belongs in sl
 
 ## Rule categories
 
-There are currently **42 rules** across 8 categories.
+There are currently **72 rules** across 8 categories.
 
 ### AI detection (Tier 1)
 

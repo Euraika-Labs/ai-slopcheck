@@ -9,10 +9,10 @@ slopcheck is a deterministic CLI scanner. The runtime model is:
 ## Global usage
 
 ```
-python -m slopcheck [COMMAND] [OPTIONS]
+ai-slopcheck [COMMAND] [OPTIONS]
 ```
 
-Run `python -m slopcheck --help` for a list of commands, or `python -m slopcheck COMMAND --help` for command-specific help.
+Run `ai-slopcheck --help` for a list of commands, or `ai-slopcheck COMMAND --help` for command-specific help.
 
 ---
 
@@ -21,7 +21,7 @@ Run `python -m slopcheck --help` for a list of commands, or `python -m slopcheck
 Scan a repository and write findings to JSON.
 
 ```
-python -m ai-slopcheck scan [PATHS...] [OPTIONS]
+ai-slopcheck scan [PATHS...] [OPTIONS]
 ```
 
 ### Arguments
@@ -65,28 +65,28 @@ This is the recommended mode for CI on large repositories.
 
 ```bash
 # Full repository scan, fail on errors (default)
-python -m ai-slopcheck scan . --repo-root .
+ai-slopcheck scan . --repo-root .
 
 # Write to a specific file, fail on any warning or error
-python -m ai-slopcheck scan . --repo-root . --output /tmp/findings.json --fail-on warning
+ai-slopcheck scan . --repo-root . --output /tmp/findings.json --fail-on warning
 
 # Only report high-confidence findings
-python -m ai-slopcheck scan . --repo-root . --min-confidence high
+ai-slopcheck scan . --repo-root . --min-confidence high
 
 # Scan only changed files (CI mode)
-python -m ai-slopcheck scan . --repo-root . --changed-files git --fail-on warning
+ai-slopcheck scan . --repo-root . --changed-files git --fail-on warning
 
 # Scan with a baseline (suppress known issues)
-python -m ai-slopcheck scan . --repo-root . --baseline .slopcheck/baseline.json
+ai-slopcheck scan . --repo-root . --baseline .slopcheck/baseline.json
 
 # Never fail (useful when introducing the tool)
-python -m ai-slopcheck scan . --repo-root . --fail-on none
+ai-slopcheck scan . --repo-root . --fail-on none
 
 # Print JSON to stdout
-python -m ai-slopcheck scan . --repo-root . --output -
+ai-slopcheck scan . --repo-root . --output -
 
 # Parallel scan with 4 threads
-python -m ai-slopcheck scan . --repo-root . --jobs 4
+ai-slopcheck scan . --repo-root . --jobs 4
 ```
 
 ---
@@ -96,7 +96,7 @@ python -m ai-slopcheck scan . --repo-root . --jobs 4
 Print a Markdown summary of findings from a findings file.
 
 ```
-python -m ai-slopcheck summary FINDINGS_FILE
+ai-slopcheck summary FINDINGS_FILE
 ```
 
 Output goes to stdout. Pipe it to `$GITHUB_STEP_SUMMARY` for GitHub Actions job summaries.
@@ -104,7 +104,7 @@ Output goes to stdout. Pipe it to `$GITHUB_STEP_SUMMARY` for GitHub Actions job 
 ### Example
 
 ```bash
-python -m ai-slopcheck summary findings.json >> "$GITHUB_STEP_SUMMARY"
+ai-slopcheck summary findings.json >> "$GITHUB_STEP_SUMMARY"
 ```
 
 ---
@@ -114,7 +114,7 @@ python -m ai-slopcheck summary findings.json >> "$GITHUB_STEP_SUMMARY"
 Print GitHub workflow annotation commands from a findings file.
 
 ```
-python -m ai-slopcheck github-annotations FINDINGS_FILE
+ai-slopcheck github-annotations FINDINGS_FILE
 ```
 
 Emits `::warning file=...::` and `::error file=...::` lines to stdout. GitHub Actions reads these and surfaces them as inline annotations on pull requests.
@@ -130,7 +130,7 @@ Annotations correspond to the severity of each finding:
 ### Example
 
 ```bash
-python -m ai-slopcheck github-annotations findings.json
+ai-slopcheck github-annotations findings.json
 ```
 
 ---
@@ -140,7 +140,7 @@ python -m ai-slopcheck github-annotations findings.json
 Print SARIF v2.1.0 JSON from a findings file.
 
 ```
-python -m ai-slopcheck sarif FINDINGS_FILE
+ai-slopcheck sarif FINDINGS_FILE
 ```
 
 Output goes to stdout. SARIF can be uploaded to GitHub's Security tab (code scanning alerts) using the `github/codeql-action/upload-sarif` action.
@@ -175,10 +175,10 @@ Severity mapping:
 
 ```bash
 # Write SARIF to a file
-python -m ai-slopcheck sarif findings.json > slopcheck.sarif
+ai-slopcheck sarif findings.json > slopcheck.sarif
 
 # Upload to GitHub Security tab (in a workflow)
-python -m ai-slopcheck sarif findings.json > slopcheck.sarif
+ai-slopcheck sarif findings.json > slopcheck.sarif
 # then use: uses: github/codeql-action/upload-sarif@v3
 #           with: sarif_file: slopcheck.sarif
 ```
@@ -190,7 +190,7 @@ python -m ai-slopcheck sarif findings.json > slopcheck.sarif
 Create a baseline file from an existing findings file. Findings in the baseline are suppressed in future scans when passed via `--baseline`.
 
 ```
-python -m ai-slopcheck create-baseline FINDINGS_FILE [OPTIONS]
+ai-slopcheck create-baseline FINDINGS_FILE [OPTIONS]
 ```
 
 ### Options
@@ -217,17 +217,17 @@ Fingerprints are sorted and deduplicated. The file is human-readable and should 
 
 ```bash
 # 1. Run an initial scan (do not fail)
-python -m ai-slopcheck scan . --repo-root . --output findings.json --fail-on none
+ai-slopcheck scan . --repo-root . --output findings.json --fail-on none
 
 # 2. Create a baseline from all current findings
-python -m ai-slopcheck create-baseline findings.json --output .slopcheck/baseline.json
+ai-slopcheck create-baseline findings.json --output .slopcheck/baseline.json
 
 # 3. Commit the baseline
 git add .slopcheck/baseline.json
 git commit -m "chore: add slopcheck baseline"
 
 # 4. Future scans only fail on NEW findings
-python -m ai-slopcheck scan . --repo-root . --baseline .slopcheck/baseline.json --fail-on warning
+ai-slopcheck scan . --repo-root . --baseline .slopcheck/baseline.json --fail-on warning
 ```
 
 See [docs/user-guide.md](user-guide.md) for the full adoption workflow.

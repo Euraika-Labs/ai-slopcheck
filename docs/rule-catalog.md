@@ -1,6 +1,6 @@
 # Rule Catalog
 
-Complete catalog of all 42 rules. For configuration details, see [docs/configuration-guide.md](configuration-guide.md). For suppression and baseline usage, see [docs/user-guide.md](user-guide.md).
+Complete catalog of all 72 rules. For configuration details, see [docs/configuration-guide.md](configuration-guide.md). For suppression and baseline usage, see [docs/user-guide.md](user-guide.md).
 
 ## Categories
 

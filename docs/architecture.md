@@ -49,8 +49,8 @@ flowchart TD
     C -- no --> E[full repo walk]
     D --> F[discover_files]
     E --> F
-    F --> G[ThreadPoolExecutor\nmax workers = min\(cpu_count, 8\)]
-    G --> H[per-file: parse suppressions\nrun applicable rules]
+    F --> G["ThreadPoolExecutor\nmax workers = min(cpu_count, 8)"]
+    G --> H["per-file: parse suppressions\nrun applicable rules"]
     H --> I[findings.json]
     I --> J[summary command\nMarkdown]
     I --> K[github-annotations\n::warning/error::]
@@ -171,7 +171,7 @@ The scanner uses `concurrent.futures.ThreadPoolExecutor` for file-level parallel
 
 Each thread calls `_scan_single_file`, which is stateless (reads file, runs rules, returns findings). The `_tree_cache` in `treesitter.py` is a module-level dict, so tree-sitter parses are shared across threads within a process; the cache is bounded to 50 entries and cleared on overflow.
 
-**Performance benchmark (2026-04 baseline):** 17,671 files across 12 repositories, 42 rules — scan completes in under 60 seconds on an 8-core machine. Rules with `supported_extensions` reduce dispatch overhead by ~60% on mixed-language repos.
+**Performance benchmark (2026-04 baseline):** 17,671 files across 12 repositories, 72 rules — scan completes in under 60 seconds on an 8-core machine. Rules with `supported_extensions` reduce dispatch overhead by ~60% on mixed-language repos.
 
 ## Tree-sitter integration
 
@@ -222,7 +222,7 @@ Place a comment on the same line or the line before a finding to suppress it:
 
 ## Rule categorization
 
-### 42 rules across 7 categories
+### 72 rules across 7 categories
 
 #### AI detection (Tier 1 — highest signal)
 
