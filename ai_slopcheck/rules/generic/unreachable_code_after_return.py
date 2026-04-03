@@ -20,7 +20,6 @@ _JS_STRUCTURAL_RE = re.compile(
     r"^\s*(catch\b|finally\b|else\b|case\b|default\b|}|//|$)"
 )
 
-_COMMENT_RE = re.compile(r"^\s*(?:#|//|/\*|\*)")
 
 
 class UnreachableCodeAfterReturnRule(Rule):

@@ -5,7 +5,6 @@ import sys
 from pathlib import Path
 
 # Go stdlib prefix — anything that doesn't contain a dot is stdlib
-_GO_STDLIB_RE = re.compile(r"^[a-z][a-z0-9/]*$")
 
 
 def _parse_requirements_txt(path: Path) -> set[str]:

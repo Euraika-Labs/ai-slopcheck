@@ -16,7 +16,6 @@ _OPEN_RE = re.compile(
 _DEFER_CLOSE_RE = re.compile(r"\bdefer\s+(\w+)\.(?:Body\.)?Close\s*\(\s*\)")
 
 # Lines that check for an error — if err != nil ends the "safe zone"
-_ERR_CHECK_RE = re.compile(r"\bif\s+err\s*!=\s*nil\b")
 
 _LOOKAHEAD = 5  # number of lines to scan for a matching defer
 
