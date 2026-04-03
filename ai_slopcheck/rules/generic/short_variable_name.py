@@ -16,7 +16,6 @@ _GO_ASSIGN_RE = re.compile(r"\b([a-z])\s*:=")
 
 _COMMENT_RE = re.compile(r"^\s*(?:#|//|/\*|\*)")
 
-_DEFAULT_ALLOWED = frozenset(["i", "j", "k", "x", "y", "z", "_", "e"])
 
 
 class ShortVariableNameRule(Rule):

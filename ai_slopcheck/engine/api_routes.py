@@ -51,7 +51,6 @@ _GO_HANDLE_RE = re.compile(
 _PY_DEF_RE = re.compile(r"^[ \t]*def\s+(\w+)\s*\(")
 
 # JS/TS function/arrow after a route call
-_JS_HANDLER_RE = re.compile(r"(?:function\s+(\w+)|(?:const|let|var)\s+(\w+)\s*=)")
 
 
 def _nextjs_path_from_file(relative_path: str) -> str:
