@@ -1,0 +1,49 @@
+name: slopcheck-pr
+
+on:
+  pull_request:
+  merge_group:
+
+permissions:
+  contents: read
+
+jobs:
+  slopcheck:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          # For pull_request events, prefer the head SHA when you need the real PR head.
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install slopcheck
+        run: |
+          python -m pip install -e .[dev]
+
+      - name: Run scan
+        run: |
+          python -m slopcheck scan . --repo-root . --output findings.json --fail-on warning
+
+      - name: Emit GitHub annotations
+        if: always()
+        run: |
+          python -m slopcheck github-annotations findings.json
+
+      - name: Add job summary
+        if: always()
+        run: |
+          python -m slopcheck summary findings.json >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload findings artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: slopcheck-findings
+          path: findings.json

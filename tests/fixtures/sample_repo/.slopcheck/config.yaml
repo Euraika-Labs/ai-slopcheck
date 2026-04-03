@@ -1,0 +1,19 @@
+ignored_paths:
+  - "tests/**"
+
+rules:
+  placeholder_tokens:
+    enabled: true
+    banned_tokens:
+      - TODO
+      - FIXME
+      - HACK
+      - TEMPORARY
+
+  forbidden_import_edges:
+    enabled: true
+    boundaries:
+      - source_glob: "src/controller.py"
+        forbidden_prefixes:
+          - "src.db"
+        message: "Controllers must not import the DB layer directly."

@@ -1,0 +1,1 @@
+"""Repository-aware example rules."""

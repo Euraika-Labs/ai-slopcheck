@@ -1,0 +1,393 @@
+from __future__ import annotations
+
+from pathlib import Path
+
+import yaml
+from pydantic import BaseModel, ConfigDict, Field, ValidationError
+
+
+class PlaceholderTokensConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+    banned_tokens: list[str] = Field(
+        default_factory=lambda: ["TODO", "FIXME", "HACK", "TEMPORARY"]
+    )
+
+
+class BoundaryConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    source_glob: str
+    forbidden_prefixes: list[str] = Field(default_factory=list)
+    message: str = "Forbidden import edge."
+
+
+class ForbiddenImportEdgesConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+    boundaries: list[BoundaryConfig] = Field(default_factory=list)
+
+
+class StubFunctionBodyConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+    excluded_function_patterns: list[str] = Field(
+        default_factory=lambda: ["__init__", "setUp", "tearDown", "setUpClass", "tearDownClass"]
+    )
+
+
+class AiInstructionCommentConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+
+
+class BareExceptPassConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+
+
+class AiConversationalBleedConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+
+
+class AiIdentityRefusalConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+
+
+class HallucinatedPlaceholderConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+    extra_patterns: list[str] = Field(default_factory=list)
+    allowed_domains: list[str] = Field(
+        default_factory=lambda: ["example.com", "example.org", "example.net"]
+    )
+
+
+class DeadCodeCommentConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+    min_consecutive_lines: int = 4
+    excluded_paths: list[str] = Field(
+        default_factory=lambda: ["docs/**", "examples/**", "*.md"]
+    )
+
+
+class IncompleteErrorMessageConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+
+
+class MissingDefaultBranchConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = False  # Opt-in: 60% precision, fires on guard clauses
+    min_elif_count: int = 2
+    check_match: bool = True
+
+
+class AiHardcodedMocksConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = False  # Opt-in: 50% precision without per-project tuning
+    additional_excluded_paths: list[str] = Field(
+        default_factory=lambda: ["**/seed*", "**/conftest*", "**/factory*", "**/fake*"]
+    )
+
+
+class UndeclaredImportConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = False  # Opt-in: too noisy without per-project manifest config
+    additional_allowed: list[str] = Field(
+        default_factory=lambda: ["typing", "typing_extensions"]
+    )
+
+
+class SqlStringConcatConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+
+
+class InsecureDefaultConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+
+
+class HardcodedSecretConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+
+
+class TypescriptAnyAbuseConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+
+
+class ReactIndexKeyConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+
+
+class ReactAsyncUseeffectConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+
+
+class GoIgnoredErrorConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+    extra_allowed_patterns: list[str] = Field(default_factory=list)
+
+
+class PythonMutableDefaultConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+
+
+class GoMissingDeferConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+
+
+class ConsoleLogConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+    allowed_methods: list[str] = Field(default_factory=lambda: ["error"])
+
+
+class GoErrorWrapConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+
+
+class CrossLanguageIdiomConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+
+
+class JsAwaitInLoopConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+
+
+class JsJsonParseUnguardedConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+
+
+class JsUnhandledPromiseConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+
+
+class JsTimerNoCleanupConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+
+
+class JsLooseEqualityConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+
+
+class JsDangerouslySetHtmlConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+
+
+class DeepNestingConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = False  # Opt-in: 243K findings at depth=4 is too noisy
+    max_depth: int = 6
+
+
+class LargeFunctionConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = False  # Opt-in: 16K findings at 60 lines is too noisy
+    max_lines: int = 100
+
+
+class SelectStarSqlConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+
+
+class WeakHashConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+
+
+class RegexDosConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+
+
+class ObviousPerfDrainConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = False  # Opt-in: 37K findings is too noisy without scope analysis
+
+
+class RulesConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    placeholder_tokens: PlaceholderTokensConfig = Field(default_factory=PlaceholderTokensConfig)
+    forbidden_import_edges: ForbiddenImportEdgesConfig = Field(
+        default_factory=ForbiddenImportEdgesConfig
+    )
+    stub_function_body: StubFunctionBodyConfig = Field(
+        default_factory=StubFunctionBodyConfig
+    )
+    ai_instruction_comment: AiInstructionCommentConfig = Field(
+        default_factory=AiInstructionCommentConfig
+    )
+    bare_except_pass: BareExceptPassConfig = Field(default_factory=BareExceptPassConfig)
+    ai_conversational_bleed: AiConversationalBleedConfig = Field(
+        default_factory=AiConversationalBleedConfig
+    )
+    ai_identity_refusal: AiIdentityRefusalConfig = Field(
+        default_factory=AiIdentityRefusalConfig
+    )
+    hallucinated_placeholder: HallucinatedPlaceholderConfig = Field(
+        default_factory=HallucinatedPlaceholderConfig
+    )
+    dead_code_comment: DeadCodeCommentConfig = Field(default_factory=DeadCodeCommentConfig)
+    incomplete_error_message: IncompleteErrorMessageConfig = Field(
+        default_factory=IncompleteErrorMessageConfig
+    )
+    missing_default_branch: MissingDefaultBranchConfig = Field(
+        default_factory=MissingDefaultBranchConfig
+    )
+    ai_hardcoded_mocks: AiHardcodedMocksConfig = Field(
+        default_factory=AiHardcodedMocksConfig
+    )
+    undeclared_import: UndeclaredImportConfig = Field(default_factory=UndeclaredImportConfig)
+    sql_string_concat: SqlStringConcatConfig = Field(default_factory=SqlStringConcatConfig)
+    insecure_default: InsecureDefaultConfig = Field(default_factory=InsecureDefaultConfig)
+    hardcoded_secret: HardcodedSecretConfig = Field(default_factory=HardcodedSecretConfig)
+    typescript_any_abuse: TypescriptAnyAbuseConfig = Field(
+        default_factory=TypescriptAnyAbuseConfig
+    )
+    react_index_key: ReactIndexKeyConfig = Field(default_factory=ReactIndexKeyConfig)
+    react_async_useeffect: ReactAsyncUseeffectConfig = Field(
+        default_factory=ReactAsyncUseeffectConfig
+    )
+    go_ignored_error: GoIgnoredErrorConfig = Field(default_factory=GoIgnoredErrorConfig)
+    python_mutable_default: PythonMutableDefaultConfig = Field(
+        default_factory=PythonMutableDefaultConfig
+    )
+    go_missing_defer: GoMissingDeferConfig = Field(default_factory=GoMissingDeferConfig)
+    console_log_in_production: ConsoleLogConfig = Field(default_factory=ConsoleLogConfig)
+    go_error_wrap_missing_w: GoErrorWrapConfig = Field(default_factory=GoErrorWrapConfig)
+    cross_language_idiom: CrossLanguageIdiomConfig = Field(
+        default_factory=CrossLanguageIdiomConfig
+    )
+    js_await_in_loop: JsAwaitInLoopConfig = Field(default_factory=JsAwaitInLoopConfig)
+    js_json_parse_unguarded: JsJsonParseUnguardedConfig = Field(
+        default_factory=JsJsonParseUnguardedConfig
+    )
+    js_unhandled_promise: JsUnhandledPromiseConfig = Field(
+        default_factory=JsUnhandledPromiseConfig
+    )
+    js_timer_no_cleanup: JsTimerNoCleanupConfig = Field(default_factory=JsTimerNoCleanupConfig)
+    js_loose_equality: JsLooseEqualityConfig = Field(default_factory=JsLooseEqualityConfig)
+    js_dangerously_set_html: JsDangerouslySetHtmlConfig = Field(
+        default_factory=JsDangerouslySetHtmlConfig
+    )
+    deep_nesting: DeepNestingConfig = Field(default_factory=DeepNestingConfig)
+    large_function: LargeFunctionConfig = Field(default_factory=LargeFunctionConfig)
+    select_star_sql: SelectStarSqlConfig = Field(default_factory=SelectStarSqlConfig)
+    weak_hash: WeakHashConfig = Field(default_factory=WeakHashConfig)
+    regex_dos: RegexDosConfig = Field(default_factory=RegexDosConfig)
+    obvious_perf_drain: ObviousPerfDrainConfig = Field(default_factory=ObviousPerfDrainConfig)
+
+
+class AppConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    ignored_paths: list[str] = Field(
+        default_factory=lambda: [
+            # Version control & environments
+            ".git/**", ".venv/**", "**/.venv/**",
+            # Build outputs
+            "dist/**", "**/dist/**",
+            "build/**", "**/build/**",
+            ".next/**", "**/.next/**",
+            # Dependencies
+            "node_modules/**", "**/node_modules/**",
+            "vendor/**", "**/vendor/**",
+            # Generated code
+            "**/generated/**",
+            # Agent/CI artifacts
+            "**/.claude/**", "**/worktrees/**",
+            "**/swarm/runs/**", "**/agents/swarm/**",
+        ]
+    )
+    rules: RulesConfig = Field(default_factory=RulesConfig)
+
+
+def resolve_config_path(repo_root: Path, explicit_path: Path | None) -> Path | None:
+    if explicit_path is not None:
+        return explicit_path
+
+    candidates = [
+        repo_root / ".slopcheck" / "config.yaml",
+        repo_root / ".slopcheck.yaml",
+        repo_root / ".slopcheck.yml",
+    ]
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+
+    return None
+
+
+def load_config(repo_root: Path, explicit_path: Path | None = None) -> AppConfig:
+    config_path = resolve_config_path(repo_root, explicit_path)
+    if config_path is None:
+        return AppConfig()
+
+    try:
+        raw = yaml.safe_load(config_path.read_text(encoding="utf-8")) or {}
+    except yaml.YAMLError as exc:
+        raise SystemExit(f"slopcheck: invalid YAML in {config_path}: {exc}") from exc
+
+    try:
+        return AppConfig.model_validate(raw)
+    except ValidationError as exc:
+        raise SystemExit(f"slopcheck: invalid config in {config_path}:\n{exc}") from exc

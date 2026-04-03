@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "slopcheck"
+version = "0.1.0"
+description = "Deterministic GitHub-first scanner skeleton for AI-style code failures."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [
+  { name = "OpenAI ChatGPT" }
+]
+dependencies = [
+  "pydantic>=2.8",
+  "PyYAML>=6.0",
+  "typer>=0.12",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.6.0",
+]
+ast = [
+  "tree-sitter>=0.23",
+]
+github = [
+  "requests>=2.32",
+]
+
+[project.scripts]
+slopcheck = "slopcheck.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["slopcheck*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.per-file-ignores]
+"slopcheck/cli.py" = ["B008"]  # typer requires function calls in argument defaults
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"

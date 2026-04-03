@@ -1,0 +1,39 @@
+name: slopcheck-commenter
+
+on:
+  workflow_run:
+    workflows: ["slopcheck-pr"]
+    types:
+      - completed
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  comment:
+    if: >
+      github.event.workflow_run.conclusion != 'cancelled'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download findings artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p artifacts
+          gh run download "${{ github.event.workflow_run.id }}" --name slopcheck-findings --dir artifacts
+
+      - name: Render summary
+        run: |
+          python -m pip install -e .
+          python -m slopcheck summary artifacts/findings.json > summary.md
+
+      - name: Show summary
+        run: cat summary.md
+
+      # This workflow is intentionally only a reference shape.
+      # A production version should:
+      # - parse PR number from workflow metadata safely
+      # - validate the findings JSON
+      # - post a comment or review summary without executing PR code
