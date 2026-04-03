@@ -52,3 +52,9 @@ class ScanResult(BaseModel):
     repo_root: str
     stats: ScanStats
     findings: list[Finding] = Field(default_factory=list)
+
+
+class ApiSnapshot(BaseModel):
+    version: str = "1"
+    generated_at: datetime = Field(default_factory=lambda: datetime.now(UTC))
+    routes: list[dict] = Field(default_factory=list)

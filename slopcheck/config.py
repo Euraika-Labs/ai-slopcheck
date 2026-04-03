@@ -446,6 +446,12 @@ class DangerousShellInMarkdownConfig(BaseModel):
     enabled: bool = True
 
 
+class ApiContractBreakingConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+
+
 class RulesConfig(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
@@ -584,6 +590,9 @@ class RulesConfig(BaseModel):
     )
     dangerous_shell_in_markdown: DangerousShellInMarkdownConfig = Field(
         default_factory=DangerousShellInMarkdownConfig
+    )
+    api_contract_breaking: ApiContractBreakingConfig = Field(
+        default_factory=ApiContractBreakingConfig
     )
 
 

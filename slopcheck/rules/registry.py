@@ -5,6 +5,7 @@ from slopcheck.rules.generic.ai_conversational_bleed import AiConversationalBlee
 from slopcheck.rules.generic.ai_hardcoded_mocks import AiHardcodedMocksRule
 from slopcheck.rules.generic.ai_identity_refusal import AiIdentityRefusalRule
 from slopcheck.rules.generic.ai_instruction_comment import AiInstructionCommentRule
+from slopcheck.rules.generic.api_contract_breaking import ApiContractBreakingRule
 from slopcheck.rules.generic.assignment_in_conditional import AssignmentInConditionalRule
 from slopcheck.rules.generic.bare_except_pass import BareExceptPassRule
 from slopcheck.rules.generic.bare_except_pass_go import BareExceptPassGoRule
@@ -166,4 +167,6 @@ def build_rules() -> list[Rule]:
         OversizedClassRule(),
         BreakInNestedLoopRule(),
         DangerousShellInMarkdownRule(),
+        # Phase 13: API contract detection
+        ApiContractBreakingRule(),
     ]
