@@ -13,7 +13,7 @@ There are two useful levels.
 One `pull_request` workflow:
 
 - checks out the PR code
-- runs `slopcheck`
+- runs `ai-slopcheck`
 - emits annotations
 - writes a job summary
 - fails or passes based on findings
@@ -117,8 +117,8 @@ Keep the artifact schema simple and versioned.
 
 - checkout code
 - install package
-- run `slopcheck scan`
-- run `slopcheck github-annotations`
+- run `ai-slopcheck scan`
+- run `ai-slopcheck github-annotations`
 - append summary to `$GITHUB_STEP_SUMMARY`
 
 ### Later hardened example

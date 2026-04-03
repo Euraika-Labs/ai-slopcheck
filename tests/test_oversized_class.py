@@ -2,8 +2,8 @@ from pathlib import Path
 
 import pytest
 
-from slopcheck.config import AppConfig, OversizedClassConfig, RulesConfig
-from slopcheck.rules.generic.oversized_class import OversizedClassRule
+from ai_slopcheck.config import AppConfig, OversizedClassConfig, RulesConfig
+from ai_slopcheck.rules.generic.oversized_class import OversizedClassRule
 
 
 @pytest.fixture

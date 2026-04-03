@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, JsDangerouslySetHtmlConfig
-from slopcheck.rules.generic.js_dangerously_set_html import JsDangerouslySetHtmlRule
+from ai_slopcheck.config import AppConfig, JsDangerouslySetHtmlConfig
+from ai_slopcheck.rules.generic.js_dangerously_set_html import JsDangerouslySetHtmlRule
 
 _PROP = "dangerouslySetInnerHTML"
 

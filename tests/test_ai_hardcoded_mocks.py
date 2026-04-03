@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AiHardcodedMocksConfig, AppConfig
-from slopcheck.rules.generic.ai_hardcoded_mocks import AiHardcodedMocksRule
+from ai_slopcheck.config import AiHardcodedMocksConfig, AppConfig
+from ai_slopcheck.rules.generic.ai_hardcoded_mocks import AiHardcodedMocksRule
 
 
 def _make_config() -> AppConfig:

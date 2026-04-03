@@ -3,8 +3,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import ApiContractBreakingConfig, AppConfig, RulesConfig
-from slopcheck.rules.generic.api_contract_breaking import ApiContractBreakingRule
+from ai_slopcheck.config import ApiContractBreakingConfig, AppConfig, RulesConfig
+from ai_slopcheck.rules.generic.api_contract_breaking import ApiContractBreakingRule
 
 
 def _make_config(*, enabled: bool = True) -> AppConfig:

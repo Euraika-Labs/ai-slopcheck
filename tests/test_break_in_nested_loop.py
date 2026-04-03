@@ -2,8 +2,8 @@ from pathlib import Path
 
 import pytest
 
-from slopcheck.config import AppConfig, BreakInNestedLoopConfig, RulesConfig
-from slopcheck.rules.generic.break_in_nested_loop import BreakInNestedLoopRule
+from ai_slopcheck.config import AppConfig, BreakInNestedLoopConfig, RulesConfig
+from ai_slopcheck.rules.generic.break_in_nested_loop import BreakInNestedLoopRule
 
 
 @pytest.fixture

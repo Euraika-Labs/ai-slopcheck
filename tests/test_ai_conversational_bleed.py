@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig
-from slopcheck.rules.generic.ai_conversational_bleed import AiConversationalBleedRule
+from ai_slopcheck.config import AppConfig
+from ai_slopcheck.rules.generic.ai_conversational_bleed import AiConversationalBleedRule
 
 
 def _scan(content: str, path: str = "src/main.py") -> list:
@@ -64,7 +64,7 @@ def test_detects_let_me_help():
 
 
 def test_disabled_rule():
-    from slopcheck.config import AiConversationalBleedConfig
+    from ai_slopcheck.config import AiConversationalBleedConfig
 
     config = AppConfig()
     config.rules.ai_conversational_bleed = AiConversationalBleedConfig(enabled=False)

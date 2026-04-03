@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, IdorRiskConfig
-from slopcheck.rules.generic.idor_risk import IdorRiskRule
+from ai_slopcheck.config import AppConfig, IdorRiskConfig
+from ai_slopcheck.rules.generic.idor_risk import IdorRiskRule
 
 
 def _scan(content: str, path: str = "views/api_handler.py") -> list:

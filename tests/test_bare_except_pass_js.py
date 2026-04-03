@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig
-from slopcheck.rules.generic.bare_except_pass_js import BareExceptPassJsRule
+from ai_slopcheck.config import AppConfig
+from ai_slopcheck.rules.generic.bare_except_pass_js import BareExceptPassJsRule
 
 
 def _scan(content: str, path: str = "src/handler.ts") -> list:

@@ -1,7 +1,7 @@
 from pathlib import Path
 
-from slopcheck.config import AppConfig, BoundaryConfig, ForbiddenImportEdgesConfig, RulesConfig
-from slopcheck.rules.repo.forbidden_import_edges import ForbiddenImportEdgesRule
+from ai_slopcheck.config import AppConfig, BoundaryConfig, ForbiddenImportEdgesConfig, RulesConfig
+from ai_slopcheck.rules.repo.forbidden_import_edges import ForbiddenImportEdgesRule
 
 
 def _make_config(

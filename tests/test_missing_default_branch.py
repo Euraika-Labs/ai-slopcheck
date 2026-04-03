@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, MissingDefaultBranchConfig
-from slopcheck.rules.generic.missing_default_branch import MissingDefaultBranchRule
+from ai_slopcheck.config import AppConfig, MissingDefaultBranchConfig
+from ai_slopcheck.rules.generic.missing_default_branch import MissingDefaultBranchRule
 
 
 def _make_config() -> AppConfig:
@@ -91,7 +91,7 @@ def test_ignores_match_with_wildcard():
 
 
 def test_configurable_min_elif():
-    from slopcheck.config import MissingDefaultBranchConfig
+    from ai_slopcheck.config import MissingDefaultBranchConfig
 
     config = AppConfig()
     config.rules.missing_default_branch = MissingDefaultBranchConfig(
@@ -126,7 +126,7 @@ def test_skips_non_python():
 
 def test_check_match_disabled():
     # With check_match=False, a match without case _ must NOT produce a finding
-    from slopcheck.config import MissingDefaultBranchConfig
+    from ai_slopcheck.config import MissingDefaultBranchConfig
 
     config = AppConfig()
     config.rules.missing_default_branch = MissingDefaultBranchConfig(check_match=False)

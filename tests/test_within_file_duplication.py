@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, WithinFileDuplicationConfig
-from slopcheck.rules.generic.within_file_duplication import WithinFileDuplicationRule
+from ai_slopcheck.config import AppConfig, WithinFileDuplicationConfig
+from ai_slopcheck.rules.generic.within_file_duplication import WithinFileDuplicationRule
 
 
 def _make_config(enabled: bool = True, min_lines: int = 4) -> AppConfig:

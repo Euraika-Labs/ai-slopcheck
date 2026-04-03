@@ -1,7 +1,7 @@
 from pathlib import Path
 
-from slopcheck.config import AppConfig, RulesConfig, UseAfterFreeConfig
-from slopcheck.rules.generic.use_after_free import UseAfterFreeRule
+from ai_slopcheck.config import AppConfig, RulesConfig, UseAfterFreeConfig
+from ai_slopcheck.rules.generic.use_after_free import UseAfterFreeRule
 
 
 def _scan(content: str, path: str = "src/main.c", enabled: bool = True) -> list:

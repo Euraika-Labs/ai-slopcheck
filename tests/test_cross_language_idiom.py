@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, CrossLanguageIdiomConfig
-from slopcheck.rules.generic.cross_language_idiom import CrossLanguageIdiomRule
+from ai_slopcheck.config import AppConfig, CrossLanguageIdiomConfig
+from ai_slopcheck.rules.generic.cross_language_idiom import CrossLanguageIdiomRule
 
 
 def _scan(content: str, path: str) -> list:
@@ -138,7 +138,7 @@ def test_disabled_rule() -> None:
 
 
 def test_severity_is_error() -> None:
-    from slopcheck.models import Severity
+    from ai_slopcheck.models import Severity
 
     findings = _scan("value = null\n", path="app.py")
     assert findings[0].severity == Severity.ERROR

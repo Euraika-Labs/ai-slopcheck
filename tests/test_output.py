@@ -1,13 +1,13 @@
 import re
 
-from slopcheck.models import Confidence, Finding, Location, ScanResult, ScanStats, Severity
-from slopcheck.output.annotations import (
+from ai_slopcheck.models import Confidence, Finding, Location, ScanResult, ScanStats, Severity
+from ai_slopcheck.output.annotations import (
     _escape_message,
     _escape_property,
     render_annotation,
     render_annotations,
 )
-from slopcheck.output.markdown_summary import _escape_markdown, render_summary
+from ai_slopcheck.output.markdown_summary import _escape_markdown, render_summary
 
 
 def _make_finding(**overrides: object) -> Finding:

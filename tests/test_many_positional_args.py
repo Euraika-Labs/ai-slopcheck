@@ -1,7 +1,7 @@
 from pathlib import Path
 
-from slopcheck.config import AppConfig, ManyPositionalArgsConfig, RulesConfig
-from slopcheck.rules.generic.many_positional_args import ManyPositionalArgsRule
+from ai_slopcheck.config import AppConfig, ManyPositionalArgsConfig, RulesConfig
+from ai_slopcheck.rules.generic.many_positional_args import ManyPositionalArgsRule
 
 
 def _make_config(**kwargs: object) -> AppConfig:

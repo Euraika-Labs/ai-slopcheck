@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 
-from slopcheck.models import (
+from ai_slopcheck.models import (
     Confidence,
     Finding,
     Location,
@@ -10,7 +10,7 @@ from slopcheck.models import (
     ScanStats,
     Severity,
 )
-from slopcheck.output.sarif import render_sarif
+from ai_slopcheck.output.sarif import render_sarif
 
 
 def _make_result(findings: list[Finding]) -> ScanResult:
@@ -46,7 +46,7 @@ def test_sarif_has_runs():
     result = _make_result([_make_finding()])
     parsed = json.loads(render_sarif(result))
     assert len(parsed["runs"]) == 1
-    assert parsed["runs"][0]["tool"]["driver"]["name"] == "slopcheck"
+    assert parsed["runs"][0]["tool"]["driver"]["name"] == "ai_slopcheck"
 
 
 def test_sarif_maps_severity():

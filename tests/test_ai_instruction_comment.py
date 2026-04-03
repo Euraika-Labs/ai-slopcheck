@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig
-from slopcheck.rules.generic.ai_instruction_comment import AiInstructionCommentRule
+from ai_slopcheck.config import AppConfig
+from ai_slopcheck.rules.generic.ai_instruction_comment import AiInstructionCommentRule
 
 
 def _scan(content: str, path: str = "src/main.py") -> list:
@@ -84,7 +84,7 @@ def test_case_insensitive():
 
 
 def test_disabled_rule():
-    from slopcheck.config import AiInstructionCommentConfig
+    from ai_slopcheck.config import AiInstructionCommentConfig
 
     config = AppConfig()
     config.rules.ai_instruction_comment = AiInstructionCommentConfig(enabled=False)

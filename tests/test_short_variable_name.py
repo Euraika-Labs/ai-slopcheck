@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, ShortVariableNameConfig
-from slopcheck.rules.generic.short_variable_name import ShortVariableNameRule
+from ai_slopcheck.config import AppConfig, ShortVariableNameConfig
+from ai_slopcheck.rules.generic.short_variable_name import ShortVariableNameRule
 
 
 def _make_config(enabled: bool = True, allowed: list | None = None) -> AppConfig:

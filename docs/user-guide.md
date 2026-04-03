@@ -12,7 +12,7 @@ It does not try to guess whether code was AI-generated. It looks for patterns th
 
 **pip:**
 ```bash
-pip install slopcheck
+pip install ai-slopcheck
 ```
 
 **pip editable install (from source):**
@@ -22,7 +22,7 @@ pip install -e .[dev]
 
 **uv:**
 ```bash
-uv pip install slopcheck
+uv pip install ai-slopcheck
 # or editable:
 uv pip install -e .[dev]
 ```
@@ -45,13 +45,13 @@ Supported grammars: Python, JavaScript/JSX, TypeScript/TSX, Go.
 
 ```bash
 # Scan the current directory
-python -m slopcheck scan . --repo-root .
+python -m ai-slopcheck scan . --repo-root .
 
 # View a summary
-python -m slopcheck summary findings.json
+python -m ai-slopcheck summary findings.json
 
 # Or print GitHub-style annotations
-python -m slopcheck github-annotations findings.json
+python -m ai-slopcheck github-annotations findings.json
 ```
 
 The `findings.json` file contains the full scan result. See [Understanding findings](#understanding-findings).
@@ -87,13 +87,13 @@ When you first introduce slopcheck to a codebase with existing issues, a baselin
 **Step 1: Run an initial scan without failing**
 
 ```bash
-python -m slopcheck scan . --repo-root . --output findings.json --fail-on none
+python -m ai-slopcheck scan . --repo-root . --output findings.json --fail-on none
 ```
 
 **Step 2: Create a baseline from all current findings**
 
 ```bash
-python -m slopcheck create-baseline findings.json --output .slopcheck/baseline.json
+python -m ai-slopcheck create-baseline findings.json --output .slopcheck/baseline.json
 ```
 
 **Step 3: Commit the baseline**
@@ -106,7 +106,7 @@ git commit -m "chore: add slopcheck baseline"
 **Step 4: Future scans only fail on new findings**
 
 ```bash
-python -m slopcheck scan . --repo-root . --baseline .slopcheck/baseline.json --fail-on warning
+python -m ai-slopcheck scan . --repo-root . --baseline .slopcheck/baseline.json --fail-on warning
 ```
 
 To remove a baseline entry (accept a finding as resolved), delete its fingerprint from `.slopcheck/baseline.json` and regenerate when needed. To add new accepted issues to the baseline, run `create-baseline` again on the latest findings.
@@ -182,19 +182,19 @@ jobs:
           python-version: "3.12"
 
       - name: Install slopcheck
-        run: pip install slopcheck
+        run: pip install ai-slopcheck
 
       - name: Run scan
         run: |
-          python -m slopcheck scan . --repo-root . --output findings.json --fail-on warning
+          python -m ai-slopcheck scan . --repo-root . --output findings.json --fail-on warning
 
       - name: Emit GitHub annotations
         if: always()
-        run: python -m slopcheck github-annotations findings.json
+        run: python -m ai-slopcheck github-annotations findings.json
 
       - name: Add job summary
         if: always()
-        run: python -m slopcheck summary findings.json >> "$GITHUB_STEP_SUMMARY"
+        run: python -m ai-slopcheck summary findings.json >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload findings artifact
         if: always()
@@ -211,7 +211,7 @@ The `if: always()` guards ensure annotations and summaries are emitted even when
 ```yaml
       - name: Run scan
         run: |
-          python -m slopcheck scan . \
+          python -m ai-slopcheck scan . \
             --repo-root . \
             --output findings.json \
             --baseline .slopcheck/baseline.json \
@@ -235,10 +235,10 @@ Scanning only changed files reduces CI time significantly on large repositories.
 
 ```bash
 # Use git to find changed files (compares to HEAD~1)
-python -m slopcheck scan . --repo-root . --changed-files git
+python -m ai-slopcheck scan . --repo-root . --changed-files git
 
 # Use a file list (e.g., from a CI step that computes changed files)
-python -m slopcheck scan . --repo-root . --changed-files @changed.txt
+python -m ai-slopcheck scan . --repo-root . --changed-files @changed.txt
 ```
 
 The `@file.txt` format reads one path per line, relative to `--repo-root`.
@@ -251,7 +251,7 @@ In a GitHub Actions workflow:
 
       - name: Run scan on changed files
         run: |
-          python -m slopcheck scan . \
+          python -m ai-slopcheck scan . \
             --repo-root . \
             --changed-files @changed.txt \
             --output findings.json \
@@ -266,10 +266,10 @@ Use `--min-confidence` to ignore low-confidence findings in CI and focus on high
 
 ```bash
 # Only report medium or high confidence findings
-python -m slopcheck scan . --repo-root . --min-confidence medium
+python -m ai-slopcheck scan . --repo-root . --min-confidence medium
 
 # Only report high confidence findings
-python -m slopcheck scan . --repo-root . --min-confidence high
+python -m ai-slopcheck scan . --repo-root . --min-confidence high
 ```
 
 This is useful when introducing the tool to a noisy codebase. Start with `--min-confidence high` and relax the filter over time.
@@ -284,10 +284,10 @@ In a workflow:
 
 ```yaml
       - name: Run scan
-        run: python -m slopcheck scan . --repo-root . --output findings.json --fail-on none
+        run: python -m ai-slopcheck scan . --repo-root . --output findings.json --fail-on none
 
       - name: Generate SARIF
-        run: python -m slopcheck sarif findings.json > slopcheck.sarif
+        run: python -m ai-slopcheck sarif findings.json > slopcheck.sarif
 
       - name: Upload to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v3

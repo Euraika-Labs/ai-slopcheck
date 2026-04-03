@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from slopcheck.engine.suppression import is_suppressed, parse_suppressions
+from ai_slopcheck.engine.suppression import is_suppressed, parse_suppressions
 
 
 def test_same_line_ignore():
@@ -68,8 +68,8 @@ def test_c_style_block_comment():
 
 def test_scanner_integration(tmp_path):
     """Integration test: suppressed findings are excluded from scan results."""
-    from slopcheck.config import AppConfig
-    from slopcheck.engine.scanner import scan_paths
+    from ai_slopcheck.config import AppConfig
+    from ai_slopcheck.engine.scanner import scan_paths
 
     # Create a file with a TODO that is suppressed
     src = tmp_path / "example.py"

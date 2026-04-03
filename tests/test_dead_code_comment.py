@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig
-from slopcheck.rules.generic.dead_code_comment import DeadCodeCommentRule
+from ai_slopcheck.config import AppConfig
+from ai_slopcheck.rules.generic.dead_code_comment import DeadCodeCommentRule
 
 
 def _scan(content: str, path: str = "src/main.py") -> list:
@@ -104,7 +104,7 @@ def test_skips_unsupported_extensions():
 
 
 def test_configurable_min_lines():
-    from slopcheck.config import DeadCodeCommentConfig
+    from ai_slopcheck.config import DeadCodeCommentConfig
 
     config = AppConfig()
     config.rules.dead_code_comment = DeadCodeCommentConfig(min_consecutive_lines=5)

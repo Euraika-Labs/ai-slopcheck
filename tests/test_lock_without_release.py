@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, LockWithoutReleaseConfig
-from slopcheck.rules.generic.lock_without_release import LockWithoutReleaseRule
+from ai_slopcheck.config import AppConfig, LockWithoutReleaseConfig
+from ai_slopcheck.rules.generic.lock_without_release import LockWithoutReleaseRule
 
 
 def _scan(content: str, path: str = "worker.py") -> list:

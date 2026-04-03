@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig
-from slopcheck.rules.generic.ai_identity_refusal import AiIdentityRefusalRule
+from ai_slopcheck.config import AppConfig
+from ai_slopcheck.rules.generic.ai_identity_refusal import AiIdentityRefusalRule
 
 
 def _scan(content: str) -> list:

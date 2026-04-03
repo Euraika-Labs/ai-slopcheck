@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, ThreadUnsafeGlobalConfig
-from slopcheck.rules.generic.thread_unsafe_global import ThreadUnsafeGlobalRule
+from ai_slopcheck.config import AppConfig, ThreadUnsafeGlobalConfig
+from ai_slopcheck.rules.generic.thread_unsafe_global import ThreadUnsafeGlobalRule
 
 
 def _scan(content: str, path: str = "worker.py") -> list:

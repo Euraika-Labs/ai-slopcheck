@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, DivisionByZeroRiskConfig
-from slopcheck.rules.generic.division_by_zero_risk import DivisionByZeroRiskRule
+from ai_slopcheck.config import AppConfig, DivisionByZeroRiskConfig
+from ai_slopcheck.rules.generic.division_by_zero_risk import DivisionByZeroRiskRule
 
 
 def _make_config():

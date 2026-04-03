@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, DeepInheritanceConfig
-from slopcheck.rules.generic.deep_inheritance import DeepInheritanceRule
+from ai_slopcheck.config import AppConfig, DeepInheritanceConfig
+from ai_slopcheck.rules.generic.deep_inheritance import DeepInheritanceRule
 
 
 def _make_config(enabled: bool = True) -> AppConfig:

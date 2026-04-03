@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, GoErrorWrapConfig
-from slopcheck.rules.generic.go_error_wrap_missing_w import GoErrorWrapMissingWRule
+from ai_slopcheck.config import AppConfig, GoErrorWrapConfig
+from ai_slopcheck.rules.generic.go_error_wrap_missing_w import GoErrorWrapMissingWRule
 
 
 def _scan(content: str, path: str = "service.go") -> list:
@@ -83,7 +83,7 @@ def test_finding_has_suggestion_mentioning_percent_w() -> None:
 
 
 def test_severity_is_warning() -> None:
-    from slopcheck.models import Severity
+    from ai_slopcheck.models import Severity
 
     code = '    return fmt.Errorf("connect: %v", err)\n'
     findings = _scan(code)

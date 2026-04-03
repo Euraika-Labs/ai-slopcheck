@@ -1,9 +1,9 @@
-"""Tests for slopcheck/engine/api_routes.py."""
+"""Tests for ai_slopcheck/engine/api_routes.py."""
 from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.engine.api_routes import (
+from ai_slopcheck.engine.api_routes import (
     extract_all_routes,
     extract_routes_from_file,
 )

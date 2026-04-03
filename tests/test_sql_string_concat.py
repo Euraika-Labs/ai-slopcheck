@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, SqlStringConcatConfig
-from slopcheck.rules.generic.sql_string_concat import SqlStringConcatRule
+from ai_slopcheck.config import AppConfig, SqlStringConcatConfig
+from ai_slopcheck.rules.generic.sql_string_concat import SqlStringConcatRule
 
 
 def _scan(content: str, path: str = "src/db.py") -> list:

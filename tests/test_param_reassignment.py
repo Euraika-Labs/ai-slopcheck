@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, ParamReassignmentConfig
-from slopcheck.rules.generic.param_reassignment import ParamReassignmentRule
+from ai_slopcheck.config import AppConfig, ParamReassignmentConfig
+from ai_slopcheck.rules.generic.param_reassignment import ParamReassignmentRule
 
 
 def _make_config(enabled: bool = True) -> AppConfig:

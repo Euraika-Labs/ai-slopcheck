@@ -3,8 +3,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from slopcheck.config import AppConfig, UndeclaredImportConfig
-from slopcheck.rules.generic.undeclared_import import UndeclaredImportRule
+from ai_slopcheck.config import AppConfig, UndeclaredImportConfig
+from ai_slopcheck.rules.generic.undeclared_import import UndeclaredImportRule
 
 
 def _make_config() -> AppConfig:

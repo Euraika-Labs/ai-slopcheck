@@ -22,16 +22,16 @@ pip install ai-slopcheck
 
 ```bash
 # Scan a project
-slopcheck scan . --output findings.json --fail-on warning
+ai-slopcheck scan . --output findings.json --fail-on warning
 
 # View results
-slopcheck summary findings.json
+ai-slopcheck summary findings.json
 
 # GitHub Security tab (SARIF)
-slopcheck sarif findings.json
+ai-slopcheck sarif findings.json
 
 # Only scan changed files (CI)
-slopcheck scan . --changed-files git --fail-on warning
+ai-slopcheck scan . --changed-files git --fail-on warning
 ```
 
 ## What It Catches
@@ -76,9 +76,9 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: '3.12' }
       - run: pip install ai-slopcheck
-      - run: slopcheck scan . --output findings.json --fail-on warning
-      - run: slopcheck github-annotations findings.json
-      - run: slopcheck sarif findings.json > results.sarif
+      - run: ai-slopcheck scan . --output findings.json --fail-on warning
+      - run: ai-slopcheck github-annotations findings.json
+      - run: ai-slopcheck sarif findings.json > results.sarif
       - uses: github/codeql-action/upload-sarif@v3
         with: { sarif_file: results.sarif }
 ```
@@ -87,23 +87,23 @@ jobs:
 
 ```bash
 # First run: baseline existing findings
-slopcheck scan . --output findings.json --fail-on none
-slopcheck create-baseline findings.json
+ai-slopcheck scan . --output findings.json --fail-on none
+ai-slopcheck create-baseline findings.json
 
 # CI: only fail on NEW findings
-slopcheck scan . --baseline .slopcheck/baseline.json --fail-on warning
+ai-slopcheck scan . --baseline .slopcheck/baseline.json --fail-on warning
 ```
 
 ## CLI Reference
 
 | Command | Purpose |
 |---------|---------|
-| `slopcheck scan [paths]` | Scan files, write findings JSON |
-| `slopcheck summary <file>` | Markdown summary |
-| `slopcheck github-annotations <file>` | GitHub workflow annotations |
-| `slopcheck sarif <file>` | SARIF v2.1.0 output |
-| `slopcheck create-baseline <file>` | Create fingerprint baseline |
-| `slopcheck api-snapshot` | Snapshot API routes for contract checks |
+| `ai-slopcheck scan [paths]` | Scan files, write findings JSON |
+| `ai-slopcheck summary <file>` | Markdown summary |
+| `ai-slopcheck github-annotations <file>` | GitHub workflow annotations |
+| `ai-slopcheck sarif <file>` | SARIF v2.1.0 output |
+| `ai-slopcheck create-baseline <file>` | Create fingerprint baseline |
+| `ai-slopcheck api-snapshot` | Snapshot API routes for contract checks |
 
 ### Key `scan` Options
 

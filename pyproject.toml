@@ -48,10 +48,10 @@ github = [
 ]
 
 [project.scripts]
-slopcheck = "slopcheck.cli:main"
+ai-slopcheck = "ai_slopcheck.cli:main"
 
 [tool.setuptools.packages.find]
-include = ["slopcheck*"]
+include = ["ai_slopcheck*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -64,7 +64,7 @@ target-version = "py312"
 select = ["E", "F", "I", "UP", "B"]
 
 [tool.ruff.lint.per-file-ignores]
-"slopcheck/cli.py" = ["B008"]  # typer requires function calls in argument defaults
+"ai_slopcheck/cli.py" = ["B008"]  # typer requires function calls in argument defaults
 
 [tool.ruff.format]
 quote-style = "double"

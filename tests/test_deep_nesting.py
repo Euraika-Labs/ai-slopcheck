@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, DeepNestingConfig
-from slopcheck.rules.generic.deep_nesting import DeepNestingRule
+from ai_slopcheck.config import AppConfig, DeepNestingConfig
+from ai_slopcheck.rules.generic.deep_nesting import DeepNestingRule
 
 
 def _make_config() -> AppConfig:

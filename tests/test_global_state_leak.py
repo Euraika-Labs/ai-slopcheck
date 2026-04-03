@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, GlobalStateLeakConfig
-from slopcheck.rules.generic.global_state_leak import GlobalStateLeakRule
+from ai_slopcheck.config import AppConfig, GlobalStateLeakConfig
+from ai_slopcheck.rules.generic.global_state_leak import GlobalStateLeakRule
 
 
 def _scan(content: str, path: str = "src/server.py") -> list:

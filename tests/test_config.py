@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from slopcheck.config import AppConfig, load_config, resolve_config_path
+from ai_slopcheck.config import AppConfig, load_config, resolve_config_path
 
 
 def test_load_config_defaults_when_no_file_exists(tmp_path: Path) -> None:

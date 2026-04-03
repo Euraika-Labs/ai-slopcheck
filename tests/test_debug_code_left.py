@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, DebugCodeLeftConfig
-from slopcheck.rules.generic.debug_code_left import DebugCodeLeftRule
+from ai_slopcheck.config import AppConfig, DebugCodeLeftConfig
+from ai_slopcheck.rules.generic.debug_code_left import DebugCodeLeftRule
 
 
 def _scan(content: str, path: str = "src/app.py") -> list:

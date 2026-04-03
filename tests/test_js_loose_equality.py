@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, JsLooseEqualityConfig
-from slopcheck.rules.generic.js_loose_equality import JsLooseEqualityRule
+from ai_slopcheck.config import AppConfig, JsLooseEqualityConfig
+from ai_slopcheck.rules.generic.js_loose_equality import JsLooseEqualityRule
 
 
 def _scan(content: str, path: str = "src/util.ts") -> list:

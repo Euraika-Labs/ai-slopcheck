@@ -5,7 +5,7 @@ from pathlib import Path
 
 from typer.testing import CliRunner
 
-from slopcheck.cli import app
+from ai_slopcheck.cli import app
 
 runner = CliRunner()
 

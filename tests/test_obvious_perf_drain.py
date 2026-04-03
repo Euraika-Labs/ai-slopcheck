@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, ObviousPerfDrainConfig
-from slopcheck.rules.generic.obvious_perf_drain import ObviousPerfDrainRule
+from ai_slopcheck.config import AppConfig, ObviousPerfDrainConfig
+from ai_slopcheck.rules.generic.obvious_perf_drain import ObviousPerfDrainRule
 
 
 def _make_config() -> AppConfig:

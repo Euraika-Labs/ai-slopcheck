@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, JsAwaitInLoopConfig
-from slopcheck.rules.generic.js_await_in_loop import JsAwaitInLoopRule
+from ai_slopcheck.config import AppConfig, JsAwaitInLoopConfig
+from ai_slopcheck.rules.generic.js_await_in_loop import JsAwaitInLoopRule
 
 
 def _scan(content: str, path: str = "src/service.ts") -> list:

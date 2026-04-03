@@ -2,8 +2,8 @@ from pathlib import Path
 
 import pytest
 
-from slopcheck.config import AppConfig, MultipleClassesPerFileConfig, RulesConfig
-from slopcheck.rules.generic.multiple_classes_per_file import MultipleClassesPerFileRule
+from ai_slopcheck.config import AppConfig, MultipleClassesPerFileConfig, RulesConfig
+from ai_slopcheck.rules.generic.multiple_classes_per_file import MultipleClassesPerFileRule
 
 
 @pytest.fixture

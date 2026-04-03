@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, RegexDosConfig
-from slopcheck.rules.generic.regex_dos import RegexDosRule
+from ai_slopcheck.config import AppConfig, RegexDosConfig
+from ai_slopcheck.rules.generic.regex_dos import RegexDosRule
 
 
 def _scan(content: str, path: str = "src/validate.py") -> list:

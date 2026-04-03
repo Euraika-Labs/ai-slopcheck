@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig
-from slopcheck.rules.generic.stub_function_body_js import StubFunctionBodyJsRule
+from ai_slopcheck.config import AppConfig
+from ai_slopcheck.rules.generic.stub_function_body_js import StubFunctionBodyJsRule
 
 
 def _scan(content: str, path: str = "src/service.ts") -> list:

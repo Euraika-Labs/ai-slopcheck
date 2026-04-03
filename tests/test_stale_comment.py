@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, StaleCommentConfig
-from slopcheck.rules.generic.stale_comment import StaleCommentRule
+from ai_slopcheck.config import AppConfig, StaleCommentConfig
+from ai_slopcheck.rules.generic.stale_comment import StaleCommentRule
 
 
 def _make_config(enabled: bool = True) -> AppConfig:

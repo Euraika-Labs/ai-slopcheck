@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, RecursionWithoutLimitConfig
-from slopcheck.rules.generic.recursion_without_limit import RecursionWithoutLimitRule
+from ai_slopcheck.config import AppConfig, RecursionWithoutLimitConfig
+from ai_slopcheck.rules.generic.recursion_without_limit import RecursionWithoutLimitRule
 
 
 def _make_config(enabled: bool = True) -> AppConfig:

@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, ReactIndexKeyConfig
-from slopcheck.rules.generic.react_index_key import ReactIndexKeyRule
+from ai_slopcheck.config import AppConfig, ReactIndexKeyConfig
+from ai_slopcheck.rules.generic.react_index_key import ReactIndexKeyRule
 
 
 def _scan(content: str, path: str = "src/List.tsx") -> list:

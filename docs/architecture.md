@@ -43,7 +43,7 @@ It focuses on deterministic signals that often correlate with AI-assisted mistak
 
 ```mermaid
 flowchart TD
-    A[GitHub Actions: checkout] --> B[slopcheck scan]
+    A[GitHub Actions: checkout] --> B[ai-slopcheck scan]
     B --> C{--changed-files?}
     C -- yes --> D[git diff / @file.txt]
     C -- no --> E[full repo walk]

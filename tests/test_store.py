@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from slopcheck.state.store import load_baseline, write_baseline
+from ai_slopcheck.state.store import load_baseline, write_baseline
 
 
 def test_load_baseline_none_path_returns_empty_set() -> None:

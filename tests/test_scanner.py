@@ -3,8 +3,8 @@ from __future__ import annotations
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
-from slopcheck.config import AppConfig
-from slopcheck.engine.scanner import scan_paths
+from ai_slopcheck.config import AppConfig
+from ai_slopcheck.engine.scanner import scan_paths
 
 
 def test_scan_paths_returns_correct_stats(tmp_path: Path) -> None:
@@ -57,7 +57,7 @@ def test_scan_paths_rule_error_does_not_crash(tmp_path: Path) -> None:
     broken_rule.scan_file.side_effect = RuntimeError("Simulated rule failure")
 
     # Patch build_rules to return only the broken rule
-    with patch("slopcheck.engine.scanner.build_rules", return_value=[broken_rule]):
+    with patch("ai_slopcheck.engine.scanner.build_rules", return_value=[broken_rule]):
         result = scan_paths(repo_root=tmp_path, targets=None, config=config)
 
     # The scan should complete without raising

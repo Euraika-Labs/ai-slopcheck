@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, JsUnhandledPromiseConfig
-from slopcheck.rules.generic.js_unhandled_promise import JsUnhandledPromiseRule
+from ai_slopcheck.config import AppConfig, JsUnhandledPromiseConfig
+from ai_slopcheck.rules.generic.js_unhandled_promise import JsUnhandledPromiseRule
 
 
 def _scan(content: str, path: str = "src/api.ts") -> list:

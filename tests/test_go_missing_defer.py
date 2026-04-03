@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, GoMissingDeferConfig
-from slopcheck.rules.generic.go_missing_defer import GoMissingDeferRule
+from ai_slopcheck.config import AppConfig, GoMissingDeferConfig
+from ai_slopcheck.rules.generic.go_missing_defer import GoMissingDeferRule
 
 
 def _scan(content: str, path: str = "main.go") -> list:

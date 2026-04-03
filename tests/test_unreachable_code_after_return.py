@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, UnreachableCodeAfterReturnConfig
-from slopcheck.rules.generic.unreachable_code_after_return import UnreachableCodeAfterReturnRule
+from ai_slopcheck.config import AppConfig, UnreachableCodeAfterReturnConfig
+from ai_slopcheck.rules.generic.unreachable_code_after_return import UnreachableCodeAfterReturnRule
 
 
 def _scan(content: str, path: str = "src/util.py") -> list:

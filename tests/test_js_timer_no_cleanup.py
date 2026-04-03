@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, JsTimerNoCleanupConfig
-from slopcheck.rules.generic.js_timer_no_cleanup import JsTimerNoCleanupRule
+from ai_slopcheck.config import AppConfig, JsTimerNoCleanupConfig
+from ai_slopcheck.rules.generic.js_timer_no_cleanup import JsTimerNoCleanupRule
 
 
 def _scan(content: str, path: str = "src/Timer.tsx") -> list:

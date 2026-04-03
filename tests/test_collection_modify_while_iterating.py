@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, CollectionModifyWhileIteratingConfig
-from slopcheck.rules.generic.collection_modify_while_iterating import (
+from ai_slopcheck.config import AppConfig, CollectionModifyWhileIteratingConfig
+from ai_slopcheck.rules.generic.collection_modify_while_iterating import (
     CollectionModifyWhileIteratingRule,
 )
 

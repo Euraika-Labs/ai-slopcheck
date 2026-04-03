@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, AssignmentInConditionalConfig
-from slopcheck.rules.generic.assignment_in_conditional import AssignmentInConditionalRule
+from ai_slopcheck.config import AppConfig, AssignmentInConditionalConfig
+from ai_slopcheck.rules.generic.assignment_in_conditional import AssignmentInConditionalRule
 
 
 def _scan(content: str, path: str = "src/app.ts") -> list:

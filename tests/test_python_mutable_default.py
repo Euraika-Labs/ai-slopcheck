@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, PythonMutableDefaultConfig
-from slopcheck.rules.generic.python_mutable_default import PythonMutableDefaultRule
+from ai_slopcheck.config import AppConfig, PythonMutableDefaultConfig
+from ai_slopcheck.rules.generic.python_mutable_default import PythonMutableDefaultRule
 
 
 def _scan(content: str, path: str = "src/utils.py") -> list:

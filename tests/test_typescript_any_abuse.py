@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, TypescriptAnyAbuseConfig
-from slopcheck.rules.generic.typescript_any_abuse import TypescriptAnyAbuseRule
+from ai_slopcheck.config import AppConfig, TypescriptAnyAbuseConfig
+from ai_slopcheck.rules.generic.typescript_any_abuse import TypescriptAnyAbuseRule
 
 
 def _scan(content: str, path: str = "src/service.ts") -> list:

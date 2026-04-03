@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, LargeFunctionConfig
-from slopcheck.rules.generic.large_function import LargeFunctionRule
+from ai_slopcheck.config import AppConfig, LargeFunctionConfig
+from ai_slopcheck.rules.generic.large_function import LargeFunctionRule
 
 
 def _make_config(max_lines: int = 60) -> AppConfig:

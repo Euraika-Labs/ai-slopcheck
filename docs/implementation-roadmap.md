@@ -22,7 +22,7 @@ Exit criteria:
 
 - `pytest` passes
 - `ruff check .` passes
-- `python -m slopcheck scan ...` works locally
+- `python -m ai-slopcheck scan ...` works locally
 
 ## Milestone 1 — stable findings and exit behavior
 

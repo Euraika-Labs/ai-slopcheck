@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, InsecureDefaultConfig
-from slopcheck.rules.generic.insecure_default import InsecureDefaultRule
+from ai_slopcheck.config import AppConfig, InsecureDefaultConfig
+from ai_slopcheck.rules.generic.insecure_default import InsecureDefaultRule
 
 
 def _scan(content: str, path: str = "src/service.py") -> list:

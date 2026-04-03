@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig
-from slopcheck.rules.generic.bare_except_pass import BareExceptPassRule
+from ai_slopcheck.config import AppConfig
+from ai_slopcheck.rules.generic.bare_except_pass import BareExceptPassRule
 
 
 def _scan(content: str) -> list:
@@ -81,7 +81,7 @@ def test_skips_non_python():
 
 
 def test_disabled_rule():
-    from slopcheck.config import BareExceptPassConfig
+    from ai_slopcheck.config import BareExceptPassConfig
 
     config = AppConfig()
     config.rules.bare_except_pass = BareExceptPassConfig(enabled=False)

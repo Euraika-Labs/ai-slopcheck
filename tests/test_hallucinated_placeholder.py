@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig
-from slopcheck.rules.generic.hallucinated_placeholder import HallucinatedPlaceholderRule
+from ai_slopcheck.config import AppConfig
+from ai_slopcheck.rules.generic.hallucinated_placeholder import HallucinatedPlaceholderRule
 
 
 def _scan(content: str, path: str = "src/config.py") -> list:
@@ -33,7 +33,7 @@ def test_allows_example_com_by_default():
 
 
 def test_detects_example_url_when_not_allowed():
-    from slopcheck.config import HallucinatedPlaceholderConfig
+    from ai_slopcheck.config import HallucinatedPlaceholderConfig
 
     config = AppConfig()
     config.rules.hallucinated_placeholder = HallucinatedPlaceholderConfig(

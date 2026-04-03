@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from slopcheck.config import AppConfig, GoIgnoredErrorConfig
-from slopcheck.rules.generic.go_ignored_error import GoIgnoredErrorRule
+from ai_slopcheck.config import AppConfig, GoIgnoredErrorConfig
+from ai_slopcheck.rules.generic.go_ignored_error import GoIgnoredErrorRule
 
 
 def _scan(content: str, path: str = "main.go") -> list:

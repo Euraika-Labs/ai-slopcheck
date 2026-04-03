@@ -2,8 +2,8 @@ from pathlib import Path
 
 import pytest
 
-from slopcheck.config import AppConfig, DangerousShellInMarkdownConfig, RulesConfig
-from slopcheck.rules.generic.dangerous_shell_in_markdown import DangerousShellInMarkdownRule
+from ai_slopcheck.config import AppConfig, DangerousShellInMarkdownConfig, RulesConfig
+from ai_slopcheck.rules.generic.dangerous_shell_in_markdown import DangerousShellInMarkdownRule
 
 
 @pytest.fixture
