@@ -10,3 +10,13 @@ build/
 *.egg-info/
 .slopcheck/*.json
 !.slopcheck/.gitkeep
+
+# Internal dev files
+.agent/
+.claude/
+prompts/
+AGENTS.md
+CLAUDE.md
+code_review.md
+wiki/
+*.Zone.Identifier
