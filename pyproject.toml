@@ -4,19 +4,36 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "slopcheck"
-version = "0.1.0"
-description = "Deterministic GitHub-first scanner skeleton for AI-style code failures."
+version = "1.0.0rc1"
+description = "Deterministic scanner for AI-style code failures. 72 rules for Python, JS/TS, Go, C/C++, SQL."
 readme = "README.md"
 requires-python = ">=3.12"
 license = { text = "MIT" }
 authors = [
-  { name = "OpenAI ChatGPT" }
+  { name = "Euraika", email = "info@euraika.net" }
 ]
+keywords = ["static-analysis", "linter", "ai-code", "code-quality", "security", "github-actions"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Software Development :: Quality Assurance",
+  "Topic :: Software Development :: Testing",
+]
+
 dependencies = [
   "pydantic>=2.8",
   "PyYAML>=6.0",
   "typer>=0.12",
 ]
+
+[project.urls]
+Homepage = "https://git.euraika.net/euraika/slopcheck"
+Documentation = "https://git.euraika.net/euraika/slopcheck/-/wikis/home"
+Repository = "https://git.euraika.net/euraika/slopcheck"
+Changelog = "https://git.euraika.net/euraika/slopcheck/-/blob/develop/CHANGELOG.md"
 
 [project.optional-dependencies]
 dev = [
